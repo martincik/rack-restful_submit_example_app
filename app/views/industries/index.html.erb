@@ -1,0 +1,30 @@
+<h1>Listing industries</h1>
+
+<form method="post">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% @industries.each do |industry| %>
+  <tr>
+    <td><%=h check_box_tag 'industry_ids[]', industry.id %></td>
+    <td><%=h link_to industry.name, industry %></td>
+    <td><%=h industry.description %></td>
+    <td><%= link_to 'Edit', edit_industry_path(industry) %></td>
+  </tr>
+<% end %>
+</table>
+
+<input type="hidden" name="__map[multi_destroy][url]" value="<%= destroy_multiple_industries_url %>" />
+<input type="hidden" name="__map[multi_destroy][method]" value="DELETE" />
+
+<input type="submit" name="__rewrite[multi_destroy]" value="Destroy">
+<input type="submit" name="__rewrite[destroy]" value="Destroy just one">
+
+</form>
+
+<br />
+
+<%= link_to 'New industry', new_industry_path %>
