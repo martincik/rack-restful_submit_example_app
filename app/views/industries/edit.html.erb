@@ -12,7 +12,8 @@
     <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= restful_submit_tag 'Show', 'show', industry_path(@industry), 'GET' %>
+    <%= f.submit 'Update without RestfulSubmmit' %>
   </p>
 <% end %>
 
